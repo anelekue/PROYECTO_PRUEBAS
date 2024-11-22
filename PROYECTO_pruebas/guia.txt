@@ -1,0 +1,81 @@
+--------MAPA.txt-------- Aimar
+He creado 2 pantallas de juego en formato txt,
+
+Se supone que en el juego la -1- tiene que estar debajo de la -2-
+
+SIGNIFICADO DE NUMEROS: 
+
+	0-> Camino (Color.GRAY.lighter())
+	1-> Arbol (Colisionable) (Color.GREEN)
+	2-> Puente (Color.BROWN)
+	3-> 
+	4-> Agua (Colisionable) (Color.BLUE.lighter())
+	5-> Camino montaña (Color.ORANGE().lighter())
+	6-> Montaña (Colisionable) (Color.RED)
+	7-> Lava (Colisionable) (Color.RED.darker())
+	8-> Camino castillo (Color.GRAY)
+	9-> Pared castillo (Color.BLACK)
+	10-> Fusion cesped/agua 
+	11-> Fusion lava/castillo
+	12-> Fusion lava/volcan
+	13-> Fusion agua/montaña
+	14-> Camino volcan (Color.RED.lighter)
+	15-> Volcan
+	16-> Hierba pueblo bosque
+	17-> Hierba pueblo volcan
+	18->
+	19->
+	20-> Portal a tutorial (colision especial) (Color.YELLOW)
+	21-> Portal a mazmorra 1 (colision especial) (Color.YELLOW)
+	22-> Portal a mazmorra 2 (colision especial) (Color.YELLOW)
+	23-> Portal a mazmorra 3 (colision especial) (Color.YELLOW)
+	24-> Portal a casa (colision especial) (Color.YELLOW)
+	25->
+	26->
+	27->
+	28->
+	29->
+	30-> Casa abajo izq
+	31-> Casa abajo der
+	32-> Casa arriba der
+	33-> Casa arriba izq
+	34->
+	35-46-> CASA GRANDE POR FUERA:
+	|43 |44 |45 |46 |
+	|42 |41 |40 |39 |   
+	|35 |36 |37 |38 |   
+	
+	
+	Para probar si el mapeado funciona, se le puede asignar un color a cada número
+	(EJ: Verde claro al arbol, verde oscuro al arbol gigante y carne al camino)
+
+------Manejo de celdas------ Ángel
+
+Para dibujar cada celda del juego, cargo el fichero mapa.txt en un array. 
+Cada celda se cargará por separado, así que habrá que llamar al método 
+cada vez que se cambie de celda.
+
+Una vez el mapa está cargado, se dibuja a sí mismo recorriendo el array y colocando bloques.
+
+Ya he implementado el cambio de celdas, basándome en una idea de Aimar. El funcionamiento está
+explicado con comentarios y javadoc en el nuevo método de Mapa "detectarCambio".
+
+Basicamente funcionará siempre que en el eje vertical de nuestro mapa de celdas
+tenga dominio -10<= x <=+10 (que no haya por ejemplo una celda 11 encima de una 10).
+
+Antes de dibujar más mapa, es importante mirar el javadoc y entender cómo funciona esto.
+
+-----Colisiones Mapa-Jugador------Ángel
+
+Para resolver las colisiones jugador-mapa, lo primero que necesito hacer es detectarlas.
+Utilizo para esto el método detectaColisión que, aunque es realmente lioso, lo único que hace
+es comprobar si hay alguna superposición jugador-mapa en cualquier dirección posible (Explicado en detalle en el método).
+Una vez detectada cualquier colisión, se devuelve true.
+
+Después queda decidir como resolver realmente la colisión.
+Lo que he decidido hacer es comprovar si hay colisión cada vez que el jugador se mueve con las teclas
+en cualquier dirección. Si se detecta algo, sumo +/-1 en el sentido opuesto al movimiento original hasta que
+deje de detectarse.
+=======
+
+>>>>>>> branch 'master' of https://github.com/JonAingeruL/DeustoVenture.git
