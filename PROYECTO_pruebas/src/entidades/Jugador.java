@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+
 import main.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -384,6 +386,7 @@ public class Jugador extends Personaje {
 					}
 				}
 			}
+
 		}
 
 		return false;
@@ -395,6 +398,27 @@ public class Jugador extends Personaje {
 
 	public void setArchivoACargar(String archivoACargar) {
 		this.archivoACargar = archivoACargar;
+	}
+	
+	public void InteracctuarNPC(Mapa mapa, int tamanobaldosa, ManejoTeclado tecladoM) {
+		int celdaX = (x + 32) / tamanobaldosa;
+		if (x < -32) {
+			celdaX = mapa.getCelda().length - 1;
+		}
+		int celdaY = (y + 32) / tamanobaldosa;
+		if (y < -32) {
+			celdaY = mapa.getCelda()[0].length - 1;
+		}
+		
+		for(NPC npc: mapa.getNpcs()) {
+			if(Math.abs(celdaX - npc.getX()) < 1 && Math.abs(celdaY - npc.getY()) <1 ) {
+				if(tecladoM.hablarNPCPulsado == true) {
+					npc.hablar();
+					break;
+				}
+			}
+		}
+		
 	}
 	
 

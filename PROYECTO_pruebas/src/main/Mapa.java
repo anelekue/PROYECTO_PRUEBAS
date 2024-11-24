@@ -33,16 +33,11 @@ public class Mapa {
 	public Mapa(int numCelda) {
 		super();
 		this.numCelda = numCelda;
+		this.npcs = new ArrayList<NPC>();
 		cargarCelda(archivoACargar, numCelda);
 	}
 	
-	public Mapa() {
-		npcs = new ArrayList<>();
-		
-		npcs.add(new NPC(8, 6, new String[]{
-			"hola"
-		}));
-	}
+
 
 	/**
 	 * Este metodo devuelve el array que representa la celda actual
@@ -171,6 +166,10 @@ public class Mapa {
 					break;
 				case 60:
 					g.setColor(Color.white);
+					npcs.add(new NPC(i, j, new String[] {
+							"hola soy un NPC",
+							"bienvenido al juego "
+					}));
 					break;
 				}
 				g.fillRect(j * tamanoBaldosa, i * tamanoBaldosa, tamanoBaldosa, tamanoBaldosa);
