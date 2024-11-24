@@ -18,7 +18,6 @@ import main.GamePanel;
 import main.ManejoTeclado;
 
 public class Jugador extends Personaje {
-	String a;
 	GamePanel gp;
 	ManejoTeclado maneT;
 	private boolean estaDentroDeMazmorra = true;
