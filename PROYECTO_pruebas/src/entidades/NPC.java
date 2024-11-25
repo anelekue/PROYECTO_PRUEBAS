@@ -18,10 +18,14 @@ public class NPC {
 	
 	//DE MOMENTO LO SACO POR PANTALLA
 	//mas adelante tengo que cambiarlo a que se muestre por pantalla, es para comprobar si funciona
-	public void hablar() {
+	public String hablar() {
+		StringBuilder textoTodo = new StringBuilder();
 		for(String linea: dialogos) {
 			System.out.println(linea);
+			textoTodo.append(linea).append(" ");
 		}
+		return textoTodo.toString().trim(); //devuelve el texto como una cadena
+		
 	}
 	
 

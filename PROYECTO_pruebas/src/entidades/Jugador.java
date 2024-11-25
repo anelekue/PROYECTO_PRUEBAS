@@ -400,7 +400,7 @@ public class Jugador extends Personaje {
 		this.archivoACargar = archivoACargar;
 	}
 	
-	public void InteracctuarNPC(Mapa mapa, int tamanobaldosa, ManejoTeclado tecladoM) {
+	public void InteracctuarNPC(Mapa mapa, int tamanobaldosa, ManejoTeclado tecladoM, GamePanel gamePanel) {
 		int celdaX = (x + 32) / tamanobaldosa;
 		if (x < -32) {
 			celdaX = mapa.getCelda().length - 1;
@@ -412,8 +412,12 @@ public class Jugador extends Personaje {
 		
 		for(NPC npc: mapa.getNpcs()) {
 			if(Math.abs(celdaX - npc.getX()) < 1 && Math.abs(celdaY - npc.getY()) <1 ) {
-				if(tecladoM.hablarNPCPulsado == true) {
-					npc.hablar();
+				if(tecladoM.hablarNPCPulsado == true) { //interactua con la tecla E
+					String textoDialogo =  npc.hablar(); // Imprime en consola y obtiene el texto.
+					gamePanel.mostrarDialogo(textoDialogo);// Enseña el texto en el JLabel.
+					break;
+				}else {
+					gamePanel.ocultarDialogo(); //se oculta el JLabel
 					break;
 				}
 			}

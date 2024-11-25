@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -62,6 +63,9 @@ public class GamePanel extends JPanel implements Runnable {
 	// personajeJugable (PJ) que sea la que controla el jugador
 	Jugador jugador = new Jugador(this, tecladoM);
 	
+	private JLabel dialogoJL;
+	
+	
 
 	// Creamos un constructor de este GamePanel
 	public GamePanel() {
@@ -78,6 +82,14 @@ public class GamePanel extends JPanel implements Runnable {
 		// Y vamos a añadir esto para que el GamePanel este "centrado" en recibir
 		// entrada de teclado
 		this.setFocusable(true);
+		
+        dialogoJL = new JLabel("");
+        dialogoJL.setBounds(10, 500, 400, 40); // Ajustar posición y tamaño.
+        dialogoJL.setOpaque(true); // Permitir un fondo para el texto.
+        dialogoJL.setBackground(Color.BLACK); // Fondo negro.
+        dialogoJL.setForeground(Color.WHITE); // Texto blanco.
+        dialogoJL.setVisible(false); // Ocultar al inicio.
+        add(dialogoJL); // Añadir el JLabel al panel.
 	}
 
 	// vamos a crear un nuevo metodo para iniciar el juego
@@ -239,4 +251,17 @@ public class GamePanel extends JPanel implements Runnable {
 		tecladoM.arribaPulsado = false;
 		
 	}
+	
+	public void mostrarDialogo(String dialogo) {
+		dialogoJL.setText(dialogo);
+		dialogoJL.setVisible(true);
+	}
+	
+	public void ocultarDialogo() {
+		dialogoJL.setVisible(false);
+		dialogoJL.setText("");
+		
+	}
+
+	
 }
