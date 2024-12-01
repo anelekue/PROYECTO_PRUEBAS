@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel implements Runnable {
 
 	private static final long serialVersionUID = 1L;
+	Graphics2D g2;
 	
 	// AJUSTES DE PANTALLA
 	final int tamañoOriginalBaldosa = 16; // Una baldosa de 16x16 (una baldosa en la medida en pixeles para crear un
@@ -25,8 +26,8 @@ public class GamePanel extends JPanel implements Runnable {
 
 	// Para ajustar el tamaño de la pantalla tenemos quen saber cuantas baldosas
 	// pueden entrar horizontal y verticalmente
-	final int maxPantallaColu = 16; // 16 baldosas en la parte de arriba cada una con un numero igual de pixeles
-	final int maxPantallaFila = 12; // 12 baldosas en cada fila, lo que hara una pantalla de 16x12 con cada baldosa
+	public final int maxPantallaColu = 16; // 16 baldosas en la parte de arriba cada una con un numero igual de pixeles
+	public final int maxPantallaFila = 12; // 12 baldosas en cada fila, lo que hara una pantalla de 16x12 con cada baldosa
 									// de 64 pixeles
 	// Ahora creamos dos variables para ponerle la altura y la anchura de la
 	// pantalla
@@ -62,10 +63,8 @@ public class GamePanel extends JPanel implements Runnable {
 	// TODO Pensar el esquema de herencias de la clase personaje y crear una clase
 	// personajeJugable (PJ) que sea la que controla el jugador
 	Jugador jugador = new Jugador(this, tecladoM);
-	
-	private JLabel dialogoJL;
-	
-	
+
+
 
 	// Creamos un constructor de este GamePanel
 	public GamePanel() {
@@ -83,13 +82,7 @@ public class GamePanel extends JPanel implements Runnable {
 		// entrada de teclado
 		this.setFocusable(true);
 		
-        dialogoJL = new JLabel("");
-        dialogoJL.setBounds(10, 500, 400, 40); // Ajustar posición y tamaño.
-        dialogoJL.setOpaque(true); // Permitir un fondo para el texto.
-        dialogoJL.setBackground(Color.BLACK); // Fondo negro.
-        dialogoJL.setForeground(Color.WHITE); // Texto blanco.
-        dialogoJL.setVisible(false); // Ocultar al inicio.
-        add(dialogoJL); // Añadir el JLabel al panel.
+ 
 	}
 
 	// vamos a crear un nuevo metodo para iniciar el juego
@@ -185,8 +178,10 @@ public class GamePanel extends JPanel implements Runnable {
 
 	// Para hacer las dos cosas dentro del bucle tenemos que crear dos metodos
 	public void update() {
+
 		// El personaje tiene una función movimiento a la que llamamos ahora
 		jugador.movimiento(tecladoM, mapa, tamañoBaldosa);
+		jugador.InteracctuarNPC(mapa, tamañoBaldosa, tecladoM);
 		
 		//controla si el inventario se puede abrir o no, para que no se abran mas de un inventario (controla que también se le haya dado a la I para abrirlo)
 		if(tecladoM.iPulsado && !tecladoM.abrirInventario) {
@@ -240,6 +235,7 @@ public class GamePanel extends JPanel implements Runnable {
 		mapa.dibujarCelda(g2, tamañoBaldosa);
 		jugador.dibujarPer(g2);
 		jugador.dibujarVidas(g2);
+		jugador.dibujarDialogoPantalla(g2, mapa);
 		
 		g2.dispose(); // Esto sirve para ahorrar memoria en el dibujado
 	}
@@ -252,16 +248,7 @@ public class GamePanel extends JPanel implements Runnable {
 		
 	}
 	
-	public void mostrarDialogo(String dialogo) {
-		dialogoJL.setText(dialogo);
-		dialogoJL.setVisible(true);
-	}
-	
-	public void ocultarDialogo() {
-		dialogoJL.setVisible(false);
-		dialogoJL.setText("");
-		
-	}
+
 
 	
 }

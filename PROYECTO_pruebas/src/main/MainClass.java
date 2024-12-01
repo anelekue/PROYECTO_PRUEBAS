@@ -1,6 +1,9 @@
 package main;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class MainClass {
 
@@ -18,7 +21,6 @@ public class MainClass {
 		window.pack(); //Con esto hace que se ajuste al tamaño y diseño preferidos de su subcomponente (el gamepanel)
 		
 		window.setLocationRelativeTo(null); //Con esto no especificamos la localizacion de la ventana, por lo que se abrira en el centro de la pantalla
-		
 		
 		window.setVisible(true); //Para poder ver la pantalla
 		

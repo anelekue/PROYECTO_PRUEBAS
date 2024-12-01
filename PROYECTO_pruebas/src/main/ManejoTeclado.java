@@ -47,7 +47,7 @@ public class ManejoTeclado implements KeyListener{ //KeyListener es la interfaz 
 		if (code == KeyEvent.VK_I ) {
 			iPulsado = true;
 		}
-		if(code == KeyEvent.VK_E) {
+		if(code == KeyEvent.VK_E ) {
 			hablarNPCPulsado =true;
 		}
 		

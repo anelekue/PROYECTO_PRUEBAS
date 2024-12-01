@@ -167,8 +167,7 @@ public class Mapa {
 				case 60:
 					g.setColor(Color.white);
 					npcs.add(new NPC(i, j, new String[] {
-							"hola soy un NPC",
-							"bienvenido al juego "
+							"hola soy un NPC,/n bienvenido al juego "
 					}));
 					break;
 				}
