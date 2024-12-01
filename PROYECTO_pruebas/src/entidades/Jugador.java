@@ -470,7 +470,6 @@ public class Jugador extends Personaje {
 					if(!teclaProcesadaNPC) {
 						teclaProcesadaNPC = true;
 						npc.hablar();
-
 					}
 
 				}else {
