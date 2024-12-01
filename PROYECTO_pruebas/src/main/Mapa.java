@@ -170,6 +170,12 @@ public class Mapa {
 							"hola soy un NPC,/n bienvenido al juego "
 					}));
 					break;
+				case 61:
+					g.setColor(Color.white);
+					npcs.add(new NPC(i, j, new String[] {
+							"hola soy el NPC2,/n disfruta del juego "
+					}));
+					break;
 				}
 				g.fillRect(j * tamanoBaldosa, i * tamanoBaldosa, tamanoBaldosa, tamanoBaldosa);
 				g.setColor(Color.WHITE);
